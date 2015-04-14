@@ -17,7 +17,8 @@ include phpsuhosin
 ```
 ```
 phpsuhosin::config {
-  "shm_size":       value => '384M';
+  "suhosin.simulation":      value => 'Off';
+  "suhosin.session.encrypt": value => 'On';
 }
 ```
 
