@@ -5,10 +5,6 @@ define phpsuhosin::config (
     /(?i-mx:centos|fedora|redhat|scientific)/ => [ 'php-suhosin' ],
   }
 
-  $service = $::operatingsystem ? {
-    /(?i-mx:centos|fedora|redhat|scientific)/ => [ 'httpd' ],
-  }
-
   $key = $title
 
   $context = '/files/etc/php.d/suhosin.ini'
@@ -17,7 +13,6 @@ define phpsuhosin::config (
     context => $context,
     onlyif  => "get ${key} != '${value}'",
     changes => "set ${key} '${value}'",
-    notify  => Service[$service],
     require => Package[$required],
   }
 
